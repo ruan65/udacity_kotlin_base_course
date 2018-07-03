@@ -8,6 +8,12 @@ import kotlin.reflect.full.findAnnotation
 @ImAPlant class Plant {
     fun trim() {}
     fun fertilize() {}
+
+//    @get:
+    var isGrowing: Boolean = true
+
+//    @set: OnSet
+    var needsFood: Boolean = true
 }
 
 annotation class ImAPlant

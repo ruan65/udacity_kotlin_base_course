@@ -15,9 +15,22 @@ class Game {
     val end = {
         path.add(Directions.END)
         println("Game over: $path")
-        path.clear()
-        println(path)
+//        path.clear()
         false
+    }
+
+    fun move(where: () -> Boolean) {
+        where.invoke()
+    }
+
+    fun makeMove(toThe: String?) {
+        when (toThe) {
+            "n" -> move(north)
+            "s" -> move(south)
+            "w" -> move(west)
+            "e" -> move(east)
+            else -> move(end)
+        }
     }
 }
 
@@ -27,19 +40,18 @@ class Game {
 
 
 fun main(args: Array<String>) {
+
     val game = Game()
 
-    println(game.path)
 
-    game.north()
-    game.east()
-    game.south()
-    game.west()
+    while (true) {
 
-    println(game.path)
+        println("Enter move\n")
 
-    var isEnded = game.end()
+        game.makeMove(readLine())
 
-    println("Is game active: $isEnded")
+        if (game.path.last() == Directions.END) break
+    }
 
+    game.path.clear()
 }

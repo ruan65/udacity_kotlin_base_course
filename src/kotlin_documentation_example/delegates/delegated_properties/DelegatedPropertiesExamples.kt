@@ -7,9 +7,10 @@ class Example {
 }
 
 class SomeDelegateClass {
+
     operator fun getValue(a : Any?, property: KProperty<*>): String {
 
-        return "$a, thank you for delegating '${property.name} to me!'"
+        return "$a, thank you for delegating '${property.name}' to me!"
     }
 
     operator fun setValue(b: Any?, property: KProperty<*>, s: String) {
@@ -26,4 +27,5 @@ fun main(args: Array<String>) {
     println(e.p)
 
     e.p = "'New value of p'"
+
 }
